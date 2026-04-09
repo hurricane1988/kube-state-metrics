@@ -17,14 +17,21 @@ limitations under the License.
 package main
 
 import (
+	"fmt"
+
 	"github.com/spf13/cobra"
 	"k8s.io/klog/v2"
+	"k8s.io/kube-state-metrics/v2/version"
 
 	"k8s.io/kube-state-metrics/v2/internal"
 	"k8s.io/kube-state-metrics/v2/pkg/options"
 )
 
 func main() {
+	// print the terminal and version information.
+	fmt.Println(version.Term())
+	version.Print()
+
 	opts := options.NewOptions()
 	cmd := options.InitCommand
 	cmd.Run = func(_ *cobra.Command, _ []string) {
